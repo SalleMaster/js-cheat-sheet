@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Cheat Sheet</title>
+  </head>
+  <body>
+    <h1>JavaScript Cheat Sheet</h1>
+
+    <script>
+      // ES6 Cheat Sheet //
+
+      // Template literals embed expressions into strings: `${ninja}`
+
+      // Function parameters
+
+      // - Rest parameters create an array from arguments that weren’t matched to parameters
+      function multiMax(first, ...remaining) {
+        /*...*/
+      }
+      multiMax(2, 3, 4, 5); //first: 2; remaining: [3, 4, 5]
+
+      // Default parameters specify default parameter values that are used if no value is supplied dur-ing invocation:
+      function do1(ninja, action = 'skulk') {
+        return ninja + ' ' + action;
+      }
+      do1('Fuma'); //"Fuma skulk"
+
+      //   Spread operatorsexpand an expression where multiple items are needed: [...items,3,4,5]
+
+      // Arrow  functions  let  us  create  functions  with  less  syntactic  clutter.  They  don’t  have  their  ownthis parameter. Instead, they inherit it from the context in which they were created
+      const values = [0, 3, 2, 5, 7, 4, 8, 1];
+      values.sort((v1, v2) => v1 - v2);
+      /*OR*/ values.sort((v1, v2) => {
+        return v1 - v2;
+      });
+      values.forEach((value) => console.log(value));
+
+      // Generators generate sequences of values on a per-request basis. Once a value is generated, the generator suspends its execution without blocking. Use yield to generate values:
+      function* IdGenerator() {
+        let id = 0;
+        while (true) {
+          yield ++id;
+        }
+      }
+
+      // Promises are placeholders for the result of a computation. A promise is a guarantee that even-tually we’ll know the result of some computation. The promise can either succeed or fail, and once it has done so, there will be no more changes:
+
+      // - Create a new promise with new Promise((resolve, reject) => {});
+      // - Call  the resolve  function  to  explicitly  resolve  a  promise.  Call  the reject  function  to explicitly reject a promise. A promise is implicitly rejected if an error occurs.
+      // - The promise object has a .then method that returns a promise and takes in two callbacks, a success callback and a failure callback:
+
+      //   myPromise.then(
+      //     (val) => console.log('Success'),
+      //     (err) => console.log('Error')
+      //   );
+
+      // - Chain in a catch method to catch promise failures: myPromise.catch(e => alert(e));.
+
+      // Classes act as syntactic sugar around JavaScript’s prototypes:
+      class Person {
+        constructor(name) {
+          this.name = name;
+        }
+        dance() {
+          return true;
+        }
+      }
+      class Ninja extends Person {
+        constructor(name, level) {
+          super(name);
+          this.level = level;
+        }
+        static compare(ninja1, ninja2) {
+          return ninja1.level - ninja2.level;
+        }
+      }
+
+      // Proxies control access to other objects. Custom actions can be executed when an object is inter-acted with (for example, when a property is read or a function is called):
+      const p = new Proxy(target, {
+        get: (target, key) => {
+          /*Called when property accessed through proxy*/
+        },
+        set: (target, key, value) => {
+          /*Called when property set through proxy*/
+        },
+      });
+
+      // Maps are mappings between a key and a value:
+      // - new Map() creates a new map.
+      // - Use the set method to add a new mapping, the get method to fetch a mapping, the has method to check whether a mapping exists, and the delete method to remove a mapping.
+
+      // Sets are collections of unique items:
+      // - new Set() creates a new set.
+      // - Use  the add  method  to  add  a  new  item,  the delete  method  to  remove  an  item,  and  the size property to check the number of items in a set.
+
+      // Destructuring extracts data from objects and arrays:
+      // - const {name: ninjaName} = ninja;
+      // - const [firstNinja] = ["Yoshi"];
+
+      // Modules are larger units of organizing code that allow us to divide programs into clusters:
+      export class Ninja {} //Export an item
+      export default class Ninja {} //Default export
+      export { ninja }; //Export existing variables
+      export { ninja as samurai }; //Rename an export
+      import Ninja from 'Ninja.js'; //Import a default export
+      import { ninja } from 'Ninja.js'; //Import named exports
+      import * as Ninja from 'Ninja.js'; //Import all named exports
+      import { ninja as iNinja } from 'Ninja.js'; //Import with a new name
+    </script>
+  </body>
+</html>

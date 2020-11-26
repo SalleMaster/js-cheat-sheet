@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playground</title>
+  </head>
+  <body>
+    <script>
+      function test() {
+        if (this == window) {
+          console.log('This is = Window', this);
+        } else {
+          console.log(`This is ${this}`);
+        }
+      }
+
+      const test1 = () => {
+        if (this == window) {
+          console.log('This is = Window', this);
+        } else {
+          console.log(`This is ${this}`);
+        }
+      };
+
+      function Ninja() {
+        this.getThis = function () {
+          if (this == window) {
+            console.log('This is = Window');
+          } else {
+            console.log(`This is ${this}`);
+          }
+        };
+        this.getThis2 = () => {
+          if (this == window) {
+            console.log('This is = Window', this);
+          } else {
+            console.log(`This is ${this}`);
+          }
+        };
+      }
+
+      const ninja1 = new Ninja();
+    </script>
+  </body>
+</html>
