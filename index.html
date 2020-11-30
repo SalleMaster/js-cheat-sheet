@@ -141,6 +141,16 @@
       import { ninja } from 'Ninja.js'; //Import named exports
       import * as Ninja from 'Ninja.js'; //Import all named exports
       import { ninja as iNinja } from 'Ninja.js'; //Import with a new name
+
+      // REACT //
+
+      // Redux Thunk is a middleware that enables us to have async actions and use dispatch
+
+      import { createStore, applyMiddleware } from 'redux';
+      import thunk from 'redux-thunk';
+
+      // use applyMiddleware to add the thunk middleware to the store
+      const store = createStore(rootReducer, applyMiddleware(thunk));
     </script>
   </body>
 </html>

@@ -7,40 +7,15 @@
   </head>
   <body>
     <script>
-      function test() {
-        if (this == window) {
-          console.log('This is = Window', this);
-        } else {
-          console.log(`This is ${this}`);
-        }
-      }
-
-      const test1 = () => {
-        if (this == window) {
-          console.log('This is = Window', this);
-        } else {
-          console.log(`This is ${this}`);
+      const test = () => {
+        var message = 'Ok';
+        inner();
+        function inner() {
+          console.log(message);
         }
       };
 
-      function Ninja() {
-        this.getThis = function () {
-          if (this == window) {
-            console.log('This is = Window');
-          } else {
-            console.log(`This is ${this}`);
-          }
-        };
-        this.getThis2 = () => {
-          if (this == window) {
-            console.log('This is = Window', this);
-          } else {
-            console.log(`This is ${this}`);
-          }
-        };
-      }
-
-      const ninja1 = new Ninja();
+      test();
     </script>
   </body>
 </html>
